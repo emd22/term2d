@@ -2,14 +2,9 @@
 #include <iostream>
 
 int main() {
-  ClearScreen();
-  CreateScreenSpace(20, 20);
-  DisableKeyPrint();
-  HideTermCaret();
-  while (true) {
-    EditScreenSpace(10, 10, CurKey());
-    Print();
-    TimeDelay("ms", 500);
-  }
+  ScreenSpace ss;
+  ss.Create();
+  ss.RectLine(0, 1, 1, TermHeight()-1, '-');
+  ss.Print();
 
 }

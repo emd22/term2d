@@ -1,3 +1,5 @@
+#pragma once
+
 #ifdef WIN32
 #include <windows.h>
 #elif _POSIX_C_SOURCE >= 199309L
