@@ -9,9 +9,8 @@ std::string AddCharToString(char c, int amt) {
   return line;
 }
 
-std::string Progress(int start, int max, int length, char style = '%', char change_style = '@') {
-  int perc = start/max * 100;
-  std::string bar = AddCharToString(change_style, perc/10);
-  bar += AddCharToString(style, length-perc/10);
+std::string Progress(int start, int length, char style = '%', char change_style = '@') {
+  std::string bar = AddCharToString(change_style, start);
+  bar += AddCharToString(style, length-start);
   return bar;
 }

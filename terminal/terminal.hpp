@@ -11,3 +11,4 @@
 #include "detail/Throw.hpp"
 
 #include "detail/widgets/ProgressBar.hpp"
+#include "detail/widgets/Circle.hpp"
