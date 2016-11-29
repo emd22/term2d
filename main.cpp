@@ -1,50 +1,48 @@
 #include "terminal/terminal.hpp"
 #include <iostream>
+#include <utility>
+#include <math.h>
+#include <cassert>
 
-#define plot(x, y, color) ss.Edit(x, y, '@', color)
-
-/*void raster_circle(
-        ScreenSpace &ss,
-        unsigned int x0,
-        unsigned int y0,
-        unsigned int radius) {
-  int f = 1 - radius;
-  int ddF_x = 0;
-  int ddF_y = -2 * radius;
+struct CircleInfo {
   int x = 0;
-  int y = radius;
+  int y = 0;
+  int radius = 10;
 
-  plot(x0, y0 + radius, 45);
-  plot(x0, y0 - radius, 45);
-  plot(x0 + radius, y0, 46);
-  plot(x0 - radius, y0, 46);
+  std::pair<double, double> threshold = { 0.9, 1.1 };
+};
 
-  while(x < y) {
-    if(f >= 0) {
-      y--;
-      ddF_y += 2;
-      f += ddF_y;
+void DrawCircle(ScreenSpace &ss,
+  CircleInfo circle)
+{
+  assert(circle.threshold.first < circle.threshold.second);
+
+  const float consoleRatio = 4.0/3.0;
+  const float a = consoleRatio * circle.radius;
+  const float b = circle.radius;
+
+  for (int y = -b; y <= b; y++) {
+    for (int x = -a; x <= a; x++) {
+      float d = (x / a)*(x / a) + (y/b)*(y/b);
+      if (d >= circle.threshold.first && d < circle.threshold.second) {
+        ss.Edit((x)+circle.radius*2, (y)+circle.radius*2, '@', WARN_COLOR);
+      }
     }
-    x++;
-    ddF_x += 2;
-    f += ddF_x + 1;
-    plot(x0 + x, y0 + y, 46);
-    plot(x0 - x, y0 + y, 46);
-    plot(x0 + x, y0 - y, 46);
-    plot(x0 - x, y0 - y, 46);
-    plot(x0 + y, y0 + x, 46);
-    plot(x0 - y, y0 + x, 46);
-    plot(x0 + y, y0 - x, 46);
-    plot(x0 - y, y0 - x, 46);
   }
-}*/
+}
 
 int main() {
+  std::cout << "test\n";
   ScreenSpace ss;
-  //HideTermCaret();
-  ss.Create('!');
-  ss.Edit(4, 4, 'K', 46);
-  ss.Edit(5, 4, 'F', 45);
+  ss.Create(' ');
+
+  ss.TextEdit(15, 15, Progress(5, 10, 10));
+  /*DrawCircle(ss, {
+    0, 0, 10, {
+      0.5, 1.0
+    }
+  });*/
+
   ss.AddObjsToSpace();
   SetTermCursorPos(0, 0);
   ss.Print();

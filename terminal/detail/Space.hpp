@@ -3,11 +3,20 @@
 #include <iostream>
 #include "Time.hpp"
 #include "Caret.hpp"
-#include "Text.hpp"
+#include "ColorText.hpp"
+
+struct Char {
+  char message = '?';
+  int color = DEFAULT_COLOR;
+  int x = 0;
+  int y = 0;
+};
 
 class ScreenSpace {
 public:
-  void Create(char style = ' ', int xsize = TermWidth(), int ysize = TermHeight()) {
+  void Create(char style = ' ',
+                     int xsize = Size::Width(),
+                     int ysize = Size::Height()) {
     stored_ysize = ysize;
     stored_xsize = xsize;
     background = style;
@@ -20,15 +29,15 @@ public:
     }
   }
   void Edit(int x, int y, char change, int color = DEFAULT_COLOR) {
-    if (x <= stored_xsize && y <= stored_ysize-1 && y >= 0) {
-      Char c;
-      c.message = change;
-      c.color = color;
-      c.x = x;
-      c.y = y;
-      charobjs.push_back(c);
-      std::cout << charobjs.size() << "\n";
-    }
+    //if (x <= stored_xsize && y <= stored_ysize-1 && y >= 0) {
+    Char c;
+    c.message = change;
+    c.color = color;
+    c.x = x;
+    c.y = y;
+    charobjs.push_back(c);
+    //std::cout << charobjs.size() << "\n";
+    //}
   }
   void TextEdit(int x, int y, std::string change, int color = DEFAULT_COLOR) {
     for (int x2 = 0; x2 < change.length(); x2++) {
@@ -52,15 +61,13 @@ public:
     }
   }
 
-  int FindAtPos(int x, int y) {
+  int FindCharObjsAtPos(int x, int y) {
     for (int i = 0; i < charobjs.size(); i++) {
       if (charobjs[i].x == x && charobjs[i].y == y) {
         return i;  //Text exists
-        break;
-      } else {
-        return -1; //Text does not exist
       }
     }
+    return -1; //Text does not exist
   }
   void AddObjsToSpace() {
     for (int i = 0; i < charobjs.size(); i++) {
@@ -75,7 +82,7 @@ public:
     for (int y = 0; y < stored_ysize; y++) {
       std::cout << "\n";
       for (int x = 0; x < screen_space[y].size(); x++) {
-        int pos = FindAtPos(x, y);
+        int pos = FindCharObjsAtPos(x, y);
         if (pos > -1) {
           ColoredText(charobjs[pos].message, charobjs[pos].color);
         } else {

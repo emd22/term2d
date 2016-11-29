@@ -23,6 +23,15 @@ inline void HideTermCaret()
     SetConsoleCursorInfo(hConsoleOutput, &structCursorInfo);
 }
 
+void ClearScreen(bool movecur = false) {
+  for (int i = 0; i < Size::Height(); i++) {
+    std::cout << "\n";
+  }
+  if (movecur == true) {
+    SetTermCursorPos(0, 0);
+  }
+}
+
 #else
 //LINUX/UNIX
 #include <cstdio>
@@ -38,8 +47,8 @@ inline void HideTermCaret()
 }
 #endif
 //A quick way to clear screen using newlines
-void ClearScreen(bool movecur = true) {
-  for (int i = 0; i < TermHeight(); i++) {
+void ClearScreen(bool movecur = false) {
+  for (int i = 0; i < Size::Height(); i++) {
     std::cout << "\n";
   }
   if (movecur == true) {

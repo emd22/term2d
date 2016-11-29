@@ -9,4 +9,5 @@
 #include "detail/Keyboard.hpp"
 #include "detail/ColorText.hpp"
 #include "detail/Throw.hpp"
-#include "detail/Text.hpp"
+
+#include "detail/widgets/ProgressBar.hpp"

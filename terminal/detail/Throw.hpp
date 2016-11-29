@@ -2,14 +2,14 @@
 
 
 #ifdef _WIN32
-#define ERROR 12
-#define WARNING 14
-#define INFO 9
+#define ERROR_COLOR 12
+#define WARN_COLOR 14
+#define ERROR_COLOR 9
 
 
 #else
-#define ERROR 31
-#define WARNING 33
-#define INFO 36
+#define ERROR_COLOR 31
+#define WARN_COLOR 33
+#define INFO_COLOR 36
 
 #endif

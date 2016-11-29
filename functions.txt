@@ -1,0 +1,19 @@
+* = needs to run to work
+
+
+*1. Create ScreenSpace(needed)
+2. DrawCircle
+3. CurKey(get current key)
+4. DisableKeyPrint
+5. EnableKeyPrint
+6. Term with & height(Size::Height, Size::Width)
+7. Edit ScreenSpace(1 character)
+8. TextEdit(edit screenspace as text)
+9. RectLine(create line or rectangle)
+*10. AddObjsToSpace(adds all objects to space)
+*11. ClearObjs(deletes objs after adding to space)
+12. UpdateScreenSpaceSize
+13. Reset(resets gamespace)
+14. TimeDelay
+15. StringLower
+16. StringUpper
