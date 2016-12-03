@@ -5,6 +5,7 @@
 #ifdef _WIN32
 
 #define DEFAULT_COLOR 15
+#define ANSI false
 
 #include <windows.h>   // WinApi header
 
@@ -22,6 +23,7 @@ void ColoredText(std::string message, int color)
 #else
 
 #define DEFAULT_COLOR 0
+#define ANSI true
 
 void ColoredText(char message, int color)
 {

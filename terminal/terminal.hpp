@@ -12,3 +12,4 @@
 
 #include "detail/widgets/ProgressBar.hpp"
 #include "detail/widgets/Circle.hpp"
+#include "detail/widgets/Modal.hpp"
