@@ -28,19 +28,21 @@ int main() {
 
     MODAL_GUARD(b_len);
 
-    std::string clicked_button = Modal(
-          ss,
-          10,            //x
-          10,            //y
-          30,            //width
-          15,            //height
-          style,         //style
-          buttons,       //buttons
-          selected,
-          clicked,
-          "Want to change the background of this modal?saddvasgdasdgashdghausidgsagdduiasog",
-          visible
-    );
+    ModalOptions mo;
+    mo.x = 10;
+    mo.y = 10;
+    mo.width = 25;
+    mo.height = 15;
+    mo.buttons = buttons;
+    mo.visible = visible;
+    mo.selected = selected;
+    mo.clicked = clicked;
+    mo.style = style;
+    mo.message = "click yes to change the background";
+
+    std::string clicked_button = Modal(ss, mo);
+
+
     if (clicked_button == "Yes") {
       if (style < 100) {
         style++;
@@ -52,16 +54,11 @@ int main() {
     if (clicked_button == "No") {
       visible = false;
     }
-    if (clicked_button == "Remind me in a minute") {
-      visible = false;
-      TimeDelay("s", 60);
-      visible = true;
-    }
 
     HideTermCaret();
     SetTermCursorPos(0, 0);
     ss.Print();
-    //TimeDelay("ms", 200);
+    TimeDelay("ms", 20);
     ss.ClearObjs();
     clicked = false;
   }
