@@ -6,7 +6,7 @@ term2d features many things including single char keyboard input, modals, drawin
 
 # Circle Drawing
 
-![alt tag](https://raw.githubusercontent.com/emd22/term2d/master/screenies/Circle.png)
+![alt tag](https://cloud.githubusercontent.com/assets/17098412/20868492/ab10b248-ba33-11e6-9b60-78297c57ef4d.png)
 you can draw fully customizable circles in the terminal in just a couple lines of code.
 
 # Modals
