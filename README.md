@@ -12,7 +12,7 @@ you can draw fully customizable circles in the terminal in just a couple lines o
 
 # Modals
 
-![alt tag](https://raw.githubusercontent.com/emd22/term2d/master/screenies/Modal.png)
+![alt tag](https://cloud.githubusercontent.com/assets/17098412/20868492/ab10b248-ba33-11e6-9b60-78297c57ef4d.png)
 
 you can use fully customizable modals and add fully functional buttons, messages, and more.
 
